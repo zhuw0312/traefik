@@ -88,9 +88,9 @@ experimental:
   http3:
     enabled: true
   plugins:
-    enabled: true
+    enabled: false
   kubernetesGateway:
-    enabled: true
+    enabled: false
     # certificate:
     #   group: "core"
     #   kind: "Secret"

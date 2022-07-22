@@ -2,9 +2,10 @@
 apiVersion: traefik.containo.us/v1alpha1
 kind: IngressRoute
 metadata:
-  name: argocd-ci
+  name: argocd-ui
   namespace: argocd
   annotations:
+    app: argocd-ui
 spec:
   entryPoints:
     - web

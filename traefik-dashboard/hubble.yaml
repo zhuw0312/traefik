@@ -1,0 +1,15 @@
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: hubble-ir
+  namespace: kube-system
+spec:
+  entryPoints:
+    - web
+  routes:
+    - match: Host(`hubble-ir.zhuw.com`)
+      kind: Rule
+      services:
+        - name: hubble-ui
+          port: 80

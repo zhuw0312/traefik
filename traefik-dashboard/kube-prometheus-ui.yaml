@@ -1,0 +1,44 @@
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: grafana-ui
+  namespace: monitoring
+spec:
+  entryPoints:
+  - web
+  routes:
+  - match: HOST(`grafana.zhuw.com`)
+    kind: Rule
+    services:
+    - name: grafana
+      port: 3000
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: prometheus-ui
+  namespace: monitoring
+spec:
+  entryPoints:
+  - web
+  routes:
+  - match: HOST(`prom.zhuw.com`)
+    kind: Rule
+    services:
+    - name: prometheus-k8s
+      port: 9090
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: alertmanager-ui
+  namespace: monitoring
+spec:
+  entryPoints:
+  - web
+  routes:
+  - match: HOST(`alert.zhuw.com`)
+    kind: Rule
+    services:
+    - name: alertmanager-main
+      port: 9093
